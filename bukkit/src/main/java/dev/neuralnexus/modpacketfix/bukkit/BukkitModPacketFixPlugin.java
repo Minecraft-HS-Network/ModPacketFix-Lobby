@@ -5,7 +5,6 @@ import com.comphenix.protocol.ProtocolManager;
 import dev.neuralnexus.modpacketfix.bukkit.eventlisteners.PlayerEventListener;
 import dev.neuralnexus.modpacketfix.bukkit.messagelisteners.BrandListener;
 import dev.neuralnexus.modpacketfix.bukkit.packetlisteners.server.RECIPES_SPacketRecipeBook;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -66,6 +65,7 @@ public class BukkitModPacketFixPlugin extends JavaPlugin {
         // Fixes the recipe book packet being too large for the client to handle.
         manager.addPacketListener(new RECIPES_SPacketRecipeBook(this));
 
+        pluginManager.registerEvents(new LoginSuccessListener(this),  this);
         // Test packet listener
 //        manager.addPacketListener(new TestPacketListener(this, PacketType.Play.Server.RECIPES, true));
 
